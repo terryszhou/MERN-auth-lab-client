@@ -2,6 +2,7 @@ import './App.css';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import { Redirect } from 'react-router-dom'
+import jwt from 'jsonwebtoken'
 
 import { NavBar } from './components/NavBar'
 import { Welcome } from './components/Welcome'
@@ -12,7 +13,17 @@ import { Profile } from './components/Profile'
 export const App = () => {
     const [currentUser, setCurrentUser] = useState(null)
 
-    useEffect(() => {})
+    useEffect(() => {
+        // get token from localStorage
+        const token = localStorage.getItem('jwtToken')
+        // if token, set user
+        if (token) {
+            setCurrentUser(jwt.decode(token))
+        // else set user state = null
+        } else {
+            setCurrentUser(null)
+        }
+    },[])
 
     const handleLogOut = () => {
         // delete jwt in localStorage
@@ -50,10 +61,12 @@ export const App = () => {
                 />
                 <Route
                     path="/profile"
-                    render={props => currentUser ? <Profile {...props} 
-                        currentUser={currentUser} 
-                        handleLogOut={handleLogOut}
-                    /> : <Redirect to="/login"/>}
+                    render={props => currentUser ? 
+                        <Profile {...props} 
+                            currentUser={currentUser} 
+                            handleLogOut={handleLogOut}
+                        /> : <Redirect to="/login"/>
+                    }
                 />
             </Switch>
         </Router>
