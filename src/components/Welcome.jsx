@@ -1,7 +1,7 @@
 export const Welcome = () => {
     return (
         <div>
-            Hello from Welcome
+            <h3>Welcome</h3>
         </div>
     )
 }

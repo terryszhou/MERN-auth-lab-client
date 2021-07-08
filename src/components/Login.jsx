@@ -1,6 +1,6 @@
-import { useState } from 'react'
 import axios from 'axios'
 import jwt from 'jsonwebtoken'
+import { useState } from 'react'
 import { Redirect } from 'react-router-dom'
 import { Profile } from './Profile'
 
@@ -12,24 +12,18 @@ export const Login = (props) => {
     const handleSubmit = async (e) => {
         try {
             e.preventDefault()
-
-            // post to backend with axios
+            // 1. make request body
             const requestBody = { email, password }
-            const serverUrl = process.env.REACT_APP_SERVER_URL
-            const response = await axios.post(`${serverUrl}/api-v1/users/login`, requestBody)
-
-            // destructure response
+            // 2. post to backend with axios
+            const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}/api-v1/users/login`, requestBody)
+            // 3. destructure response
             const { token } = response.data
-
-            // save response to localStorage
+            // 4. save response to localStorage
             localStorage.setItem('jwtToken', token)
-
-            // decode the jwt token
+            // 5. decode the jwt token
             const decoded = jwt.decode(token)
-
-            // set user in App.jsx's state
+            // 6. set user in App.jsx's state
             props.setCurrentUser(decoded)
-
         } catch(err) {
             if (err.response.status === 400) {
                 setMessage(err.response.data.msg)

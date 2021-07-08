@@ -1,8 +1,8 @@
 import './App.css';
+import jwt from 'jsonwebtoken'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import { Redirect } from 'react-router-dom'
-import jwt from 'jsonwebtoken'
 
 import { NavBar } from './components/NavBar'
 import { Welcome } from './components/Welcome'
