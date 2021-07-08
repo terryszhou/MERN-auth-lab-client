@@ -9,7 +9,7 @@ body {
 nav {
     padding: 20px;
     background-color: rgb(88,88,88);
-    box-shadow: 1px 1px 1px 1px black;
+    box-shadow: 1px 1px 1px 1px rgb(44,44,44);
 }
 
 .nav-link {

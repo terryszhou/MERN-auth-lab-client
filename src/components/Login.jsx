@@ -17,7 +17,6 @@ export const Login = (props) => {
             const requestBody = { email, password }
             const serverUrl = process.env.REACT_APP_SERVER_URL
             const response = await axios.post(`${serverUrl}/api-v1/users/login`, requestBody)
-            console.log(response)
 
             // destructure response
             const { token } = response.data
@@ -40,7 +39,13 @@ export const Login = (props) => {
         }
     }
 
-    if (props.currentUser) return <Redirect to='/profile' component={Profile} currentUser={props.currentUser} />
+    if (props.currentUser) return (
+        <Redirect 
+            to='/profile' 
+            component={Profile} 
+            currentUser={props.currentUser}
+        />    
+    ) 
 
     return (
         <div>

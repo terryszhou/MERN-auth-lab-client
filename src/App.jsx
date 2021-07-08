@@ -1,6 +1,7 @@
 import './App.css';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import { useState, useEffect } from 'react'
+import { Redirect } from 'react-router-dom'
 
 import { NavBar } from './components/NavBar'
 import { Welcome } from './components/Welcome'
@@ -11,11 +12,16 @@ import { Profile } from './components/Profile'
 export const App = () => {
     const [currentUser, setCurrentUser] = useState(null)
 
-    useEffect(() => {
+    useEffect(() => {})
 
-    })
-
-    const handleLogOut = () => console.log("Log the user out!")
+    const handleLogOut = () => {
+        // delete jwt in localStorage
+        if (localStorage.getItem('jwtToken')) {
+            localStorage.removeItem('jwtToken')
+        // set user state to null
+            setCurrentUser(null)
+        }
+    }
 
     return (
         <Router>
@@ -44,10 +50,10 @@ export const App = () => {
                 />
                 <Route
                     path="/profile"
-                    render={props => <Profile {...props} 
+                    render={props => currentUser ? <Profile {...props} 
                         currentUser={currentUser} 
-                        setCurrentUser={setCurrentUser}
-                    />}
+                        handleLogOut={handleLogOut}
+                    /> : <Redirect to="/login"/>}
                 />
             </Switch>
         </Router>
