@@ -1,0 +1,34 @@
+body {
+    text-align: center;
+}
+
+nav {
+    padding: 20px;
+    background-color: rgb(88,88,88);
+}
+
+.nav-link {
+    margin: auto 20px;
+    color: white;
+    text-decoration: none;
+}
+
+.nav-link:hover {
+    border-bottom: 2px solid white;
+}
+
+label {
+    margin: auto 10px;
+}
+
+form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+input {
+    max-width: 300px;
+    margin: 10px;
+}
