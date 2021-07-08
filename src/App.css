@@ -1,3 +1,7 @@
+* {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
 body {
     text-align: center;
 }
@@ -5,6 +9,7 @@ body {
 nav {
     padding: 20px;
     background-color: rgb(88,88,88);
+    box-shadow: 1px 1px 1px 1px black;
 }
 
 .nav-link {
@@ -17,18 +22,27 @@ nav {
     border-bottom: 2px solid white;
 }
 
+/* .clicked-link {
+    border-bottom: 2px solid white;
+} */
+
 label {
     margin: auto 10px;
 }
 
 form {
     display: flex;
-    justify-content: center;
-    align-items: center;
     flex-direction: column;
+    align-items: center;
 }
 
 input {
     max-width: 300px;
     margin: 10px;
+}
+
+.button {
+    background-color: rgb(88,88,88);
+    color: white;
+    border-radius: 5px;
 }
