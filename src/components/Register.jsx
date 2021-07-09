@@ -11,7 +11,6 @@ export const Register = (props) => {
     const [password, setPassword] = useState('')
     // state for server flash message
     const [message, setMessage] = useState('')
-
     // function for form submission
     const handleSubmit = async (e) => {
         try {
@@ -20,11 +19,13 @@ export const Register = (props) => {
             const requestBody = { name, email, password }
             // 2. post request body to server
             const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}/api-v1/users/register`, requestBody)
-            // 3. take token from response
+            // 3. destructure token from response
             const { token } = response.data
-            // 4. decode token
+            // 4. set token in local storage
+            localStorage.setItem('jwtToken', token)
+            // 5. decode token
             const decoded = jwt.decode(token)
-            // 5. set user in App.js state
+            // 6. set user in App.js state
             props.setCurrentUser(decoded)
         } catch (err) {
             if (err.response.status === 400) {

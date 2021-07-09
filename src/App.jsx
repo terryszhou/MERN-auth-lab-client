@@ -46,15 +46,15 @@ export const App = () => {
                     component={Welcome}
                 />
                 <Route
-                    path="/register"
-                    render={props => <Register {...props}
+                    path="/login"
+                    render={props => <Login {...props} 
                         currentUser={currentUser} 
                         setCurrentUser={setCurrentUser}
                     />}
                 />
                 <Route
-                    path="/login"
-                    render={props => <Login {...props} 
+                    path="/register"
+                    render={props => <Register {...props}
                         currentUser={currentUser} 
                         setCurrentUser={setCurrentUser}
                     />}
